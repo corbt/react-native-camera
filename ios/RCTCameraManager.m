@@ -30,6 +30,11 @@ RCT_EXPORT_MODULE();
 - (UIView *)view
 {
   self.session = [AVCaptureSession new];
+  
+  self.previewLayer = [AVCaptureVideoPreviewLayer layerWithSession:self.session];
+  self.previewLayer.needsDisplayOnBoundsChange = YES;
+
+  return [[RCTCamera alloc] initWithManager:self bridge:self.bridge];
 
   self.previewLayer = [AVCaptureVideoPreviewLayer layerWithSession:self.session];
   self.previewLayer.needsDisplayOnBoundsChange = YES;
